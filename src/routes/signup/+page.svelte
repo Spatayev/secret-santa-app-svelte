@@ -8,12 +8,12 @@
 </script>
 
 <SuperDebug data={$form} />
-<form method="POST">
+<form method="POST" action="?/signup">
 	<label for="name">
 		Ваше Имя
-		<input type="text" name="name" id="name" bind:value={$form.name} />
-		{#if $errors.name}
-			<small>{$errors.name}</small>
+		<input type="text" name="login" id="login" bind:value={$form.login} />
+		{#if $errors.login}
+			<small>{$errors.login}</small>
 		{/if}
 	</label>
 	<label for="email">

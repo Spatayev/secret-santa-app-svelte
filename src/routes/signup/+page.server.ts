@@ -1,10 +1,11 @@
+import { redirect } from '@sveltejs/kit';
 import { fail, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
-	name: z.string().min(1),
+	login: z.string().min(1),
 	email: z.string().email(),
 	password: z.string().min(4)
 });
@@ -17,23 +18,38 @@ export const load = async () => {
 };
 
 export const actions = {
-	default: async (event) => {
-		const form = await superValidate(event, zod(schema));
+	signup: async ({ request, cookies }) => {
+		const form = await superValidate(request, zod(schema));
 		console.log(form);
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		console.log(JSON.stringify(form));
+		console.log('body', JSON.stringify(form.data));
 		const responce = await fetch('http://51.107.14.25:8080/auth/register', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(form)
+			body: JSON.stringify(form.data)
 		});
 		if (!responce.ok) {
-			console.log('bad', responce.status);
+			const message = await responce.text();
+			console.log('message', message);
+			return { data: null, error: message };
 		}
-		console.log('result', responce.json);
+		const data = await responce.json();
+		cookies.set('accessToken', data.accessToken, {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'strict',
+			maxAge: 60 * 60 * 24 * 30
+		});
+		cookies.set('refreshToken', data.refreshToken, {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'strict',
+			maxAge: 120 * 60 * 24 * 30
+		});
+		throw redirect(302, '/');
 	}
 };
