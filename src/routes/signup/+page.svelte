@@ -4,10 +4,11 @@
 	export let data;
 
 	// Client API:
-	const { form, errors } = superForm(data.form);
+	const { form, errors, message } = superForm(data.form);
 </script>
 
 <SuperDebug data={$form} />
+
 <form method="POST" action="?/signup">
 	<label for="name">
 		Ваше Имя
