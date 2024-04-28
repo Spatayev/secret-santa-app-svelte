@@ -9,14 +9,7 @@
 
 <SuperDebug data={$form} />
 
-<form method="POST" action="?/signup">
-	<label for="name">
-		Ваше Имя
-		<input type="text" name="login" id="login" bind:value={$form.login} />
-		{#if $errors.login}
-			<small>{$errors.login}</small>
-		{/if}
-	</label>
+<form method="POST" action="login">
 	<label for="email">
 		Ваш E-mail
 		<input type="email" name="email" id="email" bind:value={$form.email} />
@@ -34,7 +27,6 @@
 	<div>
 		<button type="submit">Submit</button>
 	</div>
-	{message}
 </form>
 
 <style>

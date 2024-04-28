@@ -5,7 +5,6 @@ import { z } from 'zod';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
-	login: z.string().min(1),
 	email: z.string().email(),
 	password: z.string().min(4)
 });
@@ -18,11 +17,13 @@ export const load = async () => {
 };
 
 export const actions = {
-	signup: async ({ request, cookies }) => {
+	login: async ({ request, cookies }) => {
 		const form = await superValidate(request, zod(schema));
+		console.log(form);
 		if (!form.valid) {
 			return fail(400, { form });
 		}
+		console.log('body', JSON.stringify(form.data));
 		const responce = await fetch('http://51.107.14.25:8080/auth/register', {
 			method: 'POST',
 			headers: {
@@ -32,8 +33,7 @@ export const actions = {
 		});
 		if (!responce.ok) {
 			const message = await responce.text();
-			console.log(message);
-			return message;
+			console.log('message', message);
 		}
 		const data = await responce.json();
 		cookies.set('accessToken', data.accessToken, {
