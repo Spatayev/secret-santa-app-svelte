@@ -25,8 +25,11 @@
 		{/if}
 	</label>
 	<div>
-		<button type="submit">Submit</button>
+		<button type="submit">Войти</button>
 	</div>
+	{#if $message}
+		<div>{$message}</div>
+	{/if}
 </form>
 
 <style>

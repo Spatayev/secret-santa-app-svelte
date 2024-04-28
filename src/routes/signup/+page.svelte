@@ -32,9 +32,11 @@
 		{/if}
 	</label>
 	<div>
-		<button type="submit">Submit</button>
+		<button type="submit">Регистрация</button>
 	</div>
-	{message}
+	{#if $message}
+		<div>{$message}</div>
+	{/if}
 </form>
 
 <style>

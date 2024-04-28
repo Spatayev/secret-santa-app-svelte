@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import { fail, superValidate } from 'sveltekit-superforms';
+import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 
@@ -31,9 +31,8 @@ export const actions = {
 			body: JSON.stringify(form.data)
 		});
 		if (!responce.ok) {
-			const message = await responce.text();
-			console.log(message);
-			return message;
+			const badRes = await responce.text();
+			return message(form, badRes);
 		}
 		const data = await responce.json();
 		cookies.set('accessToken', data.accessToken, {
