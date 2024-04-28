@@ -19,7 +19,14 @@ export const MAIN_PAGE = {
 	buttonCreate: 'Создать игру',
 	buttonShuffle: 'Жеребьевка'
 };
-export const CREATE_PAGE = {
+export const GAME_PAGE = {
 	header: 'мои игры',
 	buttonCreate: 'создать игру'
+};
+export const CREATE_PAGE = {
+	title: 'создать игру',
+	gameName: 'название игры',
+	idGames: 'идентификатор',
+	radioButton: 'максимальная стоимость подарка',
+	price: 'укажите максимальную стоимость подарка'
 };
