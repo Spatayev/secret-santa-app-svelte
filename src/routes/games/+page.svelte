@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import { GAME_PAGE } from '$lib/data';
 	import ExistGames from '../../component/ExistGames.svelte';
@@ -14,7 +14,7 @@
 		</div>
 		<div>
 			{#each data.res as existGames}
-				<ExistGames />
+				<ExistGames {existGames} />
 			{/each}
 		</div>
 		<div>

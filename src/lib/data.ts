@@ -4,7 +4,7 @@ export const NAVBAR_MENU_START = [
 ];
 
 export const NAVBAR_MENU_FINISH = [
-	{ name: 'mygames', nameRu: 'мои игры' },
+	{ name: 'games', nameRu: 'мои игры' },
 	{ name: 'notification', nameRu: 'уведомления' },
 	{ name: 'account', nameRu: 'мой аккаунт' }
 ];
@@ -23,6 +23,12 @@ export const GAME_PAGE = {
 	header: 'мои игры',
 	buttonCreate: 'создать игру'
 };
+
+export const GAME_COMP = {
+	ORGANISER: 'вы организатор',
+	quantity: 'количество участников'
+};
+
 export const CREATE_PAGE = {
 	title: 'создать игру',
 	gameName: 'название игры',

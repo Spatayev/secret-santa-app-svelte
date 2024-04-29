@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SuperDebug, { superForm } from 'sveltekit-superforms';
+	import { superForm } from 'sveltekit-superforms';
 
 	export let data;
 
@@ -7,9 +7,7 @@
 	const { form, errors, message } = superForm(data.form);
 </script>
 
-<SuperDebug data={$form} />
-
-<form method="POST" action="login">
+<form method="POST" action="?/login">
 	<label for="email">
 		Ваш E-mail
 		<input type="email" name="email" id="email" bind:value={$form.email} />
