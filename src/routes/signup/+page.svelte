@@ -4,10 +4,11 @@
 	export let data;
 
 	// Client API:
-	const { form, errors } = superForm(data.form);
+	const { form, errors, message } = superForm(data.form);
 </script>
 
 <SuperDebug data={$form} />
+
 <form method="POST" action="?/signup">
 	<label for="name">
 		Ваше Имя
@@ -31,8 +32,11 @@
 		{/if}
 	</label>
 	<div>
-		<button type="submit">Submit</button>
+		<button type="submit">Регистрация</button>
 	</div>
+	{#if $message}
+		<div>{$message}</div>
+	{/if}
 </form>
 
 <style>

@@ -1,8 +1,9 @@
 import type { LayoutServerLoad } from './$types';
-export const load: LayoutServerLoad = async ({ cookies }) => {
-	const sessionid = cookies.get('accessToken');
 
-	return {
-		sessionid
-	};
+export const load: LayoutServerLoad = async ({ locals }) => {
+	const isEntry = locals.token;
+	if (isEntry) {
+		return { acces: true };
+	}
+	return { acces: false };
 };

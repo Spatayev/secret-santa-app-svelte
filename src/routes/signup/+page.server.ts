@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import { fail, superValidate } from 'sveltekit-superforms';
+import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 
@@ -20,11 +20,9 @@ export const load = async () => {
 export const actions = {
 	signup: async ({ request, cookies }) => {
 		const form = await superValidate(request, zod(schema));
-		console.log(form);
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		console.log('body', JSON.stringify(form.data));
 		const responce = await fetch('http://51.107.14.25:8080/auth/register', {
 			method: 'POST',
 			headers: {
@@ -33,9 +31,8 @@ export const actions = {
 			body: JSON.stringify(form.data)
 		});
 		if (!responce.ok) {
-			const message = await responce.text();
-			console.log('message', message);
-			return { data: null, error: message };
+			const badRes = await responce.text();
+			return message(form, badRes);
 		}
 		const data = await responce.json();
 		cookies.set('accessToken', data.accessToken, {

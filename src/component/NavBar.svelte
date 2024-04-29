@@ -1,6 +1,18 @@
 <script>
 	import { NAVBAR_MENU_START, NAVBAR_MENU_FINISH } from '$lib/data';
-	const session = cookies.get('accesToken');
+	export let isAcces;
 </script>
 
-{#if session}{/if}
+<header>
+	<nav>
+		{#if !isAcces}
+			{#each NAVBAR_MENU_START as navbar}
+				<a href={`/${navbar.name}`}>{navbar.nameRu}</a>
+			{/each}
+		{:else}
+			{#each NAVBAR_MENU_FINISH as navbar}
+				<a href={`/${navbar.name}`}>{navbar.nameRu}</a>
+			{/each}
+		{/if}
+	</nav>
+</header>
