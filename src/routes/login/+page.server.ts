@@ -23,18 +23,18 @@ export const actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		const responce = await fetch('http://51.107.14.25:8080/auth/login', {
+		const response = await fetch('http://51.107.14.25:8080/auth/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(form.data)
 		});
-		if (!responce.ok) {
-			const badRes = await responce.text();
+		if (!response.ok) {
+			const badRes = await response.text();
 			return message(form, badRes);
 		}
-		const data = await responce.json();
+		const data = await response.json();
 		cookies.set('accessToken', data.accessToken, {
 			path: '/',
 			httpOnly: true,
