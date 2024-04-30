@@ -5,7 +5,7 @@ import { z } from 'zod';
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
 	name: z.string().min(1),
-	maxPrice: z.number(),
+	maxPrice: z.number().optional(),
 	priceLimitChecked: z.boolean()
 });
 
@@ -35,7 +35,13 @@ export const actions = {
 			console.log('fail', badRes);
 			return message(form, badRes);
 		}
-
+		const res = await responce.json();
+		cookies.set('gameid', res.id, {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'strict',
+			maxAge: 60 * 60 * 24 * 30
+		});
 		throw redirect(302, '/games/created');
 	}
 };

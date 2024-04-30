@@ -7,8 +7,6 @@
 	const { form, errors, message } = superForm(data.form);
 </script>
 
-<SuperDebug data={$form} />
-
 <form method="POST" action="?/signup">
 	<label for="name">
 		Ваше Имя
