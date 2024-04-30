@@ -14,9 +14,9 @@
 	<div>
 		<button
 			on:click={() => {
-				goto('created/invite');
+				goto('created/invite/' + data.gameid);
 			}}>Добавить участников</button
 		>
 	</div>
-	{data}
+	
 </section>
