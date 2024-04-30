@@ -42,6 +42,7 @@ export const actions = {
 			sameSite: 'strict',
 			maxAge: 60 * 60 * 24 * 30
 		});
-		throw redirect(302, '/games/created');
+
+		throw redirect(302, `/games/created/${res.id}`);
 	}
 };
