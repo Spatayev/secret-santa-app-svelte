@@ -1,15 +1,15 @@
 <script>
     import { onMount } from 'svelte';
+    import { superForm } from 'sveltekit-superforms';
+
+    export let data;
+
+    // Client API:
+    const { form, errors, message } = superForm(data.form);
 
     let participants = [{ name: '', email: '' }];
-    let ID = '';
-    let access = '';
 
-    onMount(() => {
-        const params = new URLSearchParams(window.location.search);
-        ID = params.get('game_id') || '';
 
-    });
 
     const handleAddParticipant = () => {
         participants = [...participants, { name: '', email: '' }];
@@ -39,15 +39,25 @@
         {#each participants as participant, index}
         <div>
             Участник №{index + 1}
-            <input type="text" placeholder="Имя" name="name" value={participant.name} on:input={(e)=>
+            <input type="text" placeholder="Имя" name={`name.${index}`} value={participant.name} on:input={(e)=>
             handleInputChange(index, e)} />
-            <input type="text" placeholder="E-mail" name="email" value={participant.email} on:input={(e)=>
+            {#if $errors.name}
+            <small>{$errors.name}</small>
+            {/if}
+
+            <input type="text" placeholder="E-mail" name={`email.${index}`} value={participant.email} on:input={(e)=>
             handleInputChange(index, e)} />
+            {#if $errors.email}
+            <small>{$errors.email}</small>
+            {/if}
         </div>
         {/each}
-        <input type="hidden" name="gameId" value={ID} />
 
         <button type="button" on:click={handleAddParticipant}>Добавить еще участника</button>
         <button type="submit">Пригласить</button>
+
+        {#if $message}
+        <div>{$message}</div>
+        {/if}
     </form>
 </section>
