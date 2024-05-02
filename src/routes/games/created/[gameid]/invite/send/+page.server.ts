@@ -7,24 +7,24 @@ import { z } from 'zod';
 
 
 // Define outside the load function so the adapter can be cached
-const schema = z.object({});
-
-/*
 
 const schema = z.object({
   name0: z.string().min(2),
   email0: z.string().email(),
-  name1: z.string().min(2),
-  email1: z.string().email()
+  name1: z.string().min(2).optional(),
+  email1: z.string().email().optional(),
+  name2: z.string().min(2).optional(),
+  email2: z.string().email().optional(),
+  name3: z.string().min(2).optional(),
+  email3: z.string().email().optional()
 });
 
-*/
 
 export const load = async (event) => {
 
 
-  console.log('emailemailemail' + event);
-  console.log(event.request);
+  console.log('load');
+
 
   const form = await superValidate(zod(schema));
 
@@ -35,8 +35,6 @@ export const load = async (event) => {
 export const actions = {
   sender: async (request) => {
     console.log('sendersendersender');
-    const formData = (request.cookies.getAll);
-    console.log(formData);
 
 
     const form = await superValidate(request, zod(schema));
