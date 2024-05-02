@@ -4,7 +4,7 @@
 	export let existGames;
 </script>
 
-<section>
+<div>
 	<div>
 		<h3>{existGames.name}</h3>
 	</div>
@@ -13,4 +13,4 @@
 		<small>{GAME_COMP[existGames.role]}</small>
 		<small>{`${GAME_COMP.quantity} ${existGames.participantCount}`}</small>
 	</div>
-</section>
+</div>

@@ -6,7 +6,7 @@
 	const { form, errors } = superForm(data.form);
 </script>
 
-<section>
+<main class="container">
 	<h2>{CREATE_PAGE.title}</h2>
 	<form method="POST" action="?/create">
 		<label for="name">
@@ -34,4 +34,4 @@
 		{/if}
 		<button type="submit">Создать</button>
 	</form>
-</section>
+</main>

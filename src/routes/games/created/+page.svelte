@@ -3,7 +3,7 @@
 	export let data;
 </script>
 
-<section>
+<main class="container">
 	<div>
 		<h2>Игра создана</h2>
 	</div>
@@ -18,5 +18,4 @@
 			}}>Добавить участников</button
 		>
 	</div>
-	
-</section>
+</main>

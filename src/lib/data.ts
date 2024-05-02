@@ -26,6 +26,7 @@ export const GAME_PAGE = {
 
 export const GAME_COMP = {
 	ORGANISER: 'вы организатор',
+	PARTICIPANT: 'вы участник',
 	quantity: 'количество участников'
 };
 
