@@ -16,7 +16,9 @@ const schema = z.object({
   name2: z.string().min(2).optional(),
   email2: z.string().email().optional(),
   name3: z.string().min(2).optional(),
-  email3: z.string().email().optional()
+  email3: z.string().email().optional(),
+  name4: z.string().min(2).optional(),
+  email4: z.string().email().optional()
 });
 
 
