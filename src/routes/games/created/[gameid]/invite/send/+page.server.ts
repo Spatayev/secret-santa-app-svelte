@@ -46,45 +46,50 @@ export const actions = {
       return fail(400, { form });
     }
 
-    let successMessage = '';
-    let errorMessage;
+
     console.log('request');
     console.log(request.locals.token);
 
     try {
-      const response = await fetch(`http://51.107.14.25:8080/invitations/${request.params.gameid}/send`, {
+
+      const invitations = [];
+      for (let i = 0; i < 5; i++) {
+        if (form.data[`name${i}`] && form.data[`email${i}`]) {
+          invitations.push({
+            name: form.data[`name${i}`],
+            email: form.data[`email${i}`]
+          });
+        }
+      }
+
+      console.log(JSON.stringify(invitations));
+
+      const response = await fetch(`http://158.160.21.73:8080/invitations/${request.params.gameid}/send`, {
         method: 'POST',
         headers: {
           'accept': '*/*',
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${request.locals.token}`,
         },
-        body: JSON.stringify(form.data)
+        body: JSON.stringify(invitations)
 
       });
+      console.log('response');
+      console.log(response);
 
       if (!response.ok) {
-        const badRes = await response.text();
-        return message(form, badRes);
+        const errorText = await response.text();
+        return message(form, errorText);
+      }
+      else {
+        const successText = await response.text();
+        return message(form, successText);
       }
 
-      if (response.headers.get('Content-Type') === 'application/json') {
-        const responseBody = await response.json();
-        if (response.status === 200) {
-          successMessage = 'Данные успешно отправлены на сервер';
-        } else if (response.status === 202) {
-          successMessage = 'Вы уже ';
-          successMessage = 'Message:' + responseBody.message;
-        }
-      } else {
-        const responseData = await response.text();
-        successMessage = '' + responseData;
-      }
     } catch (error) {
-      errorMessage = error;
-      errorMessage = 'Ошибка:' + errorMessage;
+      return message(form, error.message || 'Send: Internal Server Error 500');
+
     }
 
-    return { successMessage, errorMessage };
   }
 };
