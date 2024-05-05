@@ -21,7 +21,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 		console.log('body', JSON.stringify(form.data.email));
-		const responce = await fetch(`http://51.107.14.25:8080/auth/forgot-password?email=${form.data.email}`, {
+		const responce = await fetch(`http://158.160.21.73:8080/auth/forgot-password?email=${form.data.email}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
