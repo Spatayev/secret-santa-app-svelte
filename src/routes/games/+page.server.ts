@@ -1,6 +1,6 @@
 import type { PageServerLoad } from '../signup/$types';
 export const load: PageServerLoad = async ({ cookies }) => {
-	const responce = await fetch('http://51.107.14.25:8080/games/mygames', {
+	const responce = await fetch('http://158.160.21.73:8080/games/mygames', {
 		method: 'GET',
 		headers: {
 			Authorization: `Bearer ${cookies.get('accessToken')}`,

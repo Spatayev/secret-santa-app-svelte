@@ -1,10 +1,13 @@
-<script>
+<script lang='ts'>
+	import {fly} from 'svelte/transition'
 	import { goto } from '$app/navigation';
 	import { MAIN_PAGE } from '$lib/data';
-	import Santa from '$lib/santa.svelte';
+	import Santa from '$lib/santa.svg';
+	import SnowfallAnimation from '$lib/snowfallAnimation.svelte';
 </script>
 
-<main class="container">
+<main class="container" transition:fly ={{ x: -200}}>
+
 	<article class="text part">
 		<section>
 			<div>
@@ -14,23 +17,21 @@
 				<p>{MAIN_PAGE.title}</p>
 			</div>
 		</section>
-
 		<div>
 			<button
-				class="create btn"
+				class="primary-btn"
 				on:click={() => {
 					goto('/games/create');
 				}}
 			>
 				{MAIN_PAGE.buttonCreate}
 			</button>
-			<button class="play btn">
+			<button class="primary-btn">
 				{MAIN_PAGE.buttonShuffle}
 			</button>
 		</div>
 	</article>
 	<aside class="img part"><Santa /></aside>
+	<SnowfallAnimation/>
 </main>
 
-<style>
-</style>

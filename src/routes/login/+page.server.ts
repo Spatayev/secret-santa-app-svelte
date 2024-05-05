@@ -23,7 +23,7 @@ export const actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		const response = await fetch('http://51.107.14.25:8080/auth/login', {
+		const response = await fetch('http://158.160.21.73:8080/auth/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

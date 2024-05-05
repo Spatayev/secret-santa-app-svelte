@@ -8,21 +8,17 @@
 </script>
 
 <main class="container">
-	<form method="POST" action="?/login">
-		<label for="email">
-			Ваш E-mail
-			<input type="email" name="email" id="email" bind:value={$form.email} />
-			{#if $errors.email}
-				<small>{$errors.email}</small>
-			{/if}
-		</label>
-		<label for="password">
-			Ваш Пароль
-			<input type="password" name="password" id="password" bind:value={$form.password} />
-			{#if $errors.password}
-				<small>{$errors.password}</small>
-			{/if}
-		</label>
+	<form class='form-section login' method="POST" action="?/login">
+		<label for="email">Ваш E-mail</label>
+		<input type="email" name="email" id="email" bind:value={$form.email} />
+		{#if $errors.email}
+			<small>{$errors.email}</small>
+		{/if}
+		<label for="password">Ваш Пароль</label>
+		<input type="password" name="password" id="password" bind:value={$form.password} />
+		{#if $errors.password}
+			<small>{$errors.password}</small>
+		{/if}
 		<div>
 			<button type="submit">Войти</button>
 		</div>
@@ -31,11 +27,3 @@
 		{/if}
 	</form>
 </main>
-
-<style>
-	form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-</style>
