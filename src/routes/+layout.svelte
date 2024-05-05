@@ -5,4 +5,4 @@
 </script>
 
 <NavBar isAcces={data.acces} />
-<slot />;
+<slot />
