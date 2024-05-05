@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+	--primary-btn-color: #ff6300;
+	--primary-bg-color: #coe3e5;
+	--paragraph-font-size: 1.5 rem;
+	--main-header-font-size: 4.7 rem;
+}
+body {
+	font-family: 'DM Sans', sans-serif;
+}
