@@ -8,22 +8,32 @@
 </script>
 
 <main class="container">
+	
 	<form class='form-section login' method="POST" action="?/login">
+		<article class='title-section'>
+			<h3>Войти</h3>
+		</article>
 		<label for="email">Ваш E-mail</label>
-		<input type="email" name="email" id="email" bind:value={$form.email} />
+		<input class='input-style' type="email" name="email" id="email" bind:value={$form.email} />
 		{#if $errors.email}
 			<small>{$errors.email}</small>
 		{/if}
 		<label for="password">Ваш Пароль</label>
-		<input type="password" name="password" id="password" bind:value={$form.password} />
+		<input class='input-style' type="password" name="password" id="password" bind:value={$form.password} />
 		{#if $errors.password}
 			<small>{$errors.password}</small>
 		{/if}
-		<div>
-			<button type="submit">Войти</button>
+		<div class='sector'>
+			<a href="/forgot-password">Забыли пароль?</a>
+		</div>
+		<div class='center'>
+			<button class='primary-btn' type="submit">Войти</button>
 		</div>
 		{#if $message}
 			<div>{$message}</div>
 		{/if}
+		
 	</form>
 </main>
+
+<style></style>

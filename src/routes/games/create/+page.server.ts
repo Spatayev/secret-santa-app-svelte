@@ -22,7 +22,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 		console.log(JSON.stringify(form.data));
-		const responce = await fetch('http://51.107.14.25:8080/games/create-game', {
+		const responce = await fetch('http://158.160.21.73:8080/games/create-game', {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${cookies.get('accessToken')}`,

@@ -2,19 +2,19 @@
 	import {fly} from 'svelte/transition'
 	import { goto } from '$app/navigation';
 	import { MAIN_PAGE } from '$lib/data';
-	import Santa from '$lib/santa.svg';
+	import Santa from '$lib/santa.svg?url';
 	import SnowfallAnimation from '$lib/snowfallAnimation.svelte';
 </script>
 
 <main class="container" transition:fly ={{ x: -200}}>
 
-	<article class="text part">
-		<section>
+	<article class="text-part">
+		<section class='text-content'>
 			<div>
-				<h1>{MAIN_PAGE.header}</h1>
+				<h1 class='main-title'>{MAIN_PAGE.header}</h1>
 			</div>
 			<div>
-				<p>{MAIN_PAGE.title}</p>
+				<p class='main-about'>{MAIN_PAGE.title}</p>
 			</div>
 		</section>
 		<div>
@@ -31,7 +31,9 @@
 			</button>
 		</div>
 	</article>
-	<aside class="img part"><Santa /></aside>
+	<aside class="img part">
+		<img class="title-santa" src={Santa} alt='santa-img'>
+	</aside>
 	<SnowfallAnimation/>
 </main>
 

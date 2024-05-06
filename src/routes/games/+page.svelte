@@ -7,19 +7,18 @@
 </script>
 
 <main class='container' transition:fly = {{x: -200}}>
-	<section>
-		<div>
+	<section class='box'>
+		<div class='title'>
 			<h1>
 				{GAME_PAGE.header}
 			</h1>
 		</div>
-		<div>
-			{#each data.res as existGames}
+		{#each data.res as existGames}
+			<div class='card'>
 				<ExistGames {existGames} />
-                <div><a href={`/games/created/${existGames.id}`}>Пригласить участников</a></div>
-			{/each}
-            
-		</div>
+			</div>
+				
+		{/each}
 		<div>
 			<button
 				on:click={() => {

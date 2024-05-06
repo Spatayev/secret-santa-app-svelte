@@ -2,7 +2,7 @@
     import { onMount } from 'svelte'
   
     // a bunch of variables defining the snow and how it falls
-    const SNOWFLAKES_COUNT = 200 // on firefox should go smoothly up to 750
+    const SNOWFLAKES_COUNT = 50 // on firefox should go smoothly up to 750
     const SNOWFLAKE_MIN_SCALE = 0.1
     const MELTING_SPEED = 1.12
     const WIND_FORCE = 0.01
@@ -47,7 +47,7 @@
         }
   
         snowflakes = snowflakes.map(flake => {
-          if (flake.y >= 90) {
+          if (flake.y >= 100) {
             flake.opacity = Math.pow(flake.opacity, MELTING_SPEED)
           } else {
             flake.y += FALL_SPEED * flake.scale * framesCompleted
@@ -71,7 +71,7 @@
   
   <style>
     :global(body) {
-      min-height: 100%;
+      max-height: 100%;
     }
   
     :global(html) {
@@ -83,7 +83,7 @@
       font-size: 1.2rem;
       line-height: 1.2rem;
       font-family: Arial, sans-serif;
-      text-shadow: 0 0 5px #000;
+      text-shadow: 0 0 100px #000;
       position: absolute;
       z-index: 1000;
       overflow: hidden;
