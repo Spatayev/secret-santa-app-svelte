@@ -5,6 +5,15 @@
 
   const gameid = $page.params.gameid;
 
+import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
+
+  console.log('PUBLIC_BASE_URL');
+  console.log(PUBLIC_BASE_URL);
+
+  console.log('PUBLIC_language');
+  console.log(PUBLIC_language);
+
+
   console.log($page.params);
 </script>
 
