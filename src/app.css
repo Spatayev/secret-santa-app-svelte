@@ -115,7 +115,7 @@ ul li a {
 }
 .form-section {
 	padding: 60px;
-	width: 50vw;
+	max-width: 50vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -201,6 +201,7 @@ label {
 }
 h3 {
 	font-size: 2rem;
+	text-transform: capitalize;
 }
 .box {
 	display: flex;
@@ -208,7 +209,21 @@ h3 {
 }
 .card {
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-.img-box img {
-	max-width: 275px;
+.box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: white;
+}
+.card-img {
+	max-width: 150px;
+}
+.div-img {
+	margin: 20px;
+	border: solid 2px var(--primary-btn-color);
+	border-radius: 5px;
 }

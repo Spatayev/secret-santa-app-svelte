@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
 	import { CREATE_PAGE } from '$lib/data';
+	import { scale } from 'svelte/transition';
 	let yes = false;
 	export let data;
 	const { form, errors } = superForm(data.form);
@@ -26,13 +27,13 @@
 			{/if}
 		</label>
 		{#if yes}
-			<label for="maxPrice">
+			<label in:scale for="maxPrice">
 				{CREATE_PAGE.price}
-				<input class='input-style' type="number" name="maxPrice" />
+			</label>
+			<input class='input-style' type="number" name="maxPrice" />
 				{#if $errors.maxPrice}
 					<small>{$errors.maxPrice}</small>
 				{/if}
-			</label>
 		{/if}
 		<div class='center'>
 			<button class='primary-btn' type="submit">Создать</button>

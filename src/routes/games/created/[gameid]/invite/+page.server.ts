@@ -1,46 +1,26 @@
-/** @type {import('./$types').Actions} */
+// import type { PageServerLoad } from '../signup/$types';
 
-export const actions = {
-    sender: async (participantsData) => {
-        let successMessage = '';
-        let errorMessage;
-      
-        try {
-          const response = await fetch(`http://51.107.14.25:8080/invitations/${participantsData.gameId}/send`, {
-            method: 'POST',
-            headers: {
-              'accept': '*/*',
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${participantsData.access}`,
-            },
-            body: JSON.stringify([{
-              name: participantsData.name,
-              email: participantsData.email,
-            }]),
-          });
-      
-          if (!response.ok) {
-            errorMessage = await response.text() || 'Ошибка при отправке данных на сервер';
-            throw new Error(errorMessage);
-          }
-      
-          if (response.headers.get('Content-Type') === 'application/json') {
-            const responseBody = await response.json();
-            if (response.status === 200) {
-              successMessage = 'Данные успешно отправлены на сервер';
-            } else if (response.status === 202) {
-              successMessage = 'Вы уже ';
-              successMessage = 'Message:' + responseBody.message;
-            }
-          } else {
-            const responseData = await response.text();
-            successMessage = '' + responseData;
-          }
-        } catch (error) {
-          errorMessage = error;
-          errorMessage = 'Ошибка:' + errorMessage;
-        }
-      
-        return { successMessage, errorMessage };
-    }
+// export const load: PageServerLoad = async ({params}) => {
+//   return { params.gameid}
+// };
+import type { PageLoad } from './$types';
+
+export const load: PageLoad = async ({ params, cookies }) => {
+	const response = await fetch(
+		`http://158.160.21.73:8080/gameuser/${await params.gameid}/list-before-shuffle`,
+		{
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${cookies.get('accessToken')}`,
+				'Content-Type': 'application/json'
+			}
+		}
+	);
+	if (!response.ok) {
+		const badRes = await response.text();
+		return { badRes };
+	}
+	const res = await response.json();
+	console.log(res);
+	return { res };
 };

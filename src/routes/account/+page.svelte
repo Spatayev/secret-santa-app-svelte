@@ -15,17 +15,10 @@
             <article class='title-section'>
 			    <h3>Личные данные</h3>
 		    </article>
-            <label for="login">Ваше Имя</label>
-            <input type="text" name='login' placeholder={data.res.login}>
-            <label for="email">Ваш E-mail</label>
-            <input type="email" name='email' placeholder={data.res.email}>
-        </form>
-        <form class='form-section' method="POST" action='?/password'>
-            <article class='title-section'>
-                <h3>Пароль</h3>
-            </article>
-            <label for="password">Новый пароль</label>
-            <input type="password" name='password'>
+            <label for="newLogin">Ваше Имя</label>
+            <input type="text" name='newLogin' placeholder={data.res.login}>
+            <label for="newEmail">Ваш E-mail</label>
+            <input type="email" name='newEmail' placeholder={data.res.email}>
             <button type='submit'>Сохранить</button>
         </form>
     </section>
