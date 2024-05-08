@@ -14,15 +14,14 @@
 body {
 	font-size: 1rem;
 	font-family: 'DM Sans', sans-serif;
-
 	background-color: #c0e3e5;
 }
 
 .container {
-	padding-top: 70px;
 	margin: 0 auto;
 	display: flex;
-	max-height: 80vh;
+	max-width: 100%;
+	min-height: 80vh;
 	justify-content: center;
 	align-items: center;
 	z-index: auto;
@@ -39,7 +38,7 @@ body {
 }
 .title-santa {
 	height: 600px;
-	padding-top: 100px;
+	padding-top: 50px;
 }
 .btn {
 	cursor: pointer;
@@ -202,4 +201,14 @@ label {
 }
 h3 {
 	font-size: 2rem;
+}
+.box {
+	display: flex;
+	max-width: 800px;
+}
+.card {
+	display: flex;
+}
+.img-box img {
+	max-width: 275px;
 }

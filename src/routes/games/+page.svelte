@@ -1,18 +1,19 @@
 <script lang="ts">
+	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
 	import { GAME_PAGE } from '$lib/data';
 	import ExistGames from '../../component/ExistGames.svelte';
 	import {fly} from 'svelte/transition'
-	export let data;
+	export let data: PageData;
 </script>
 
 <main class='container' transition:fly = {{x: -200}}>
 	<section class='box'>
-		<div class='title'>
+		<article class='title'>
 			<h1>
 				{GAME_PAGE.header}
 			</h1>
-		</div>
+		</article>
 		{#each data.res as existGames}
 			<div class='card'>
 				<ExistGames {existGames} />

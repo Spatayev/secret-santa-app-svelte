@@ -2,14 +2,14 @@ import { redirect } from '@sveltejs/kit';
 import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
-
+import type { PageServerLoad, Actions } from './$types';
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
 	email: z.string().email(),
 	password: z.string().min(4)
 });
 
-export const load = async () => {
+export const load: PageServerLoad = async () => {
 	const form = await superValidate(zod(schema));
 
 	// Always return { form } in load functions
@@ -49,4 +49,4 @@ export const actions = {
 		});
 		throw redirect(302, '/');
 	}
-};
+} satisfies Actions;

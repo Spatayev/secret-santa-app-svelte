@@ -71,11 +71,11 @@
   
   <style>
     :global(body) {
-      max-height: 100%;
+      min-height: 80%;
     }
   
     :global(html) {
-      height: 100%;
+      min-height: 80%;
     }
   
     .snowflake {

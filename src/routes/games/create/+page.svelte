@@ -7,11 +7,13 @@
 </script>
 
 <main class="container">
-	<h2>{CREATE_PAGE.title}</h2>
-	<form method="POST" action="?/create">
+	<form class='form-section' method="POST" action="?/create">
+		<article class='title-section'>
+			<h3>{CREATE_PAGE.title}</h3>
+		</article>
 		<label for="name">
 			{CREATE_PAGE.gameName}
-			<input type="text" name="name" />
+			<input class='input-style' type="text" name="name" />
 			{#if $errors.name}
 				<small>{$errors.name}</small>
 			{/if}
@@ -26,12 +28,15 @@
 		{#if yes}
 			<label for="maxPrice">
 				{CREATE_PAGE.price}
-				<input type="number" name="maxPrice" />
+				<input class='input-style' type="number" name="maxPrice" />
 				{#if $errors.maxPrice}
 					<small>{$errors.maxPrice}</small>
 				{/if}
 			</label>
 		{/if}
-		<button type="submit">Создать</button>
+		<div class='center'>
+			<button class='primary-btn' type="submit">Создать</button>
+		</div>
+		
 	</form>
 </main>
