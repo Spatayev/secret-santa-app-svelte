@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	export let data;
+	import type { PageData } from './$types';
+	export let data: PageData;
 </script>
 
 <main class="container">

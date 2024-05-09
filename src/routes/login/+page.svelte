@@ -1,26 +1,26 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
 	import type { PageData } from './$types';
-
+	import {fly} from 'svelte/transition'
 	export let data: PageData;
 
 	// Client API:
 	const { form, errors, message } = superForm(data.form);
 </script>
 
-<main class="container">
+<main class="container" transition:fly ={{ x: -200}}>
 	
 	<form class='form-section login' method="POST" action="?/login">
 		<article class='title-section'>
 			<h3>Войти</h3>
 		</article>
 		<label for="email">Ваш E-mail</label>
-		<input class='input-style' type="email" name="email" id="email" bind:value={$form.email} />
+		<input class={$errors.email ? 'error-input input-style' : 'input-style'} type="email" name="email" id="email" bind:value={$form.email} />
 		{#if $errors.email}
 			<small>{$errors.email}</small>
 		{/if}
 		<label for="password">Ваш Пароль</label>
-		<input class='input-style' type="password" name="password" id="password" bind:value={$form.password} />
+		<input class={$errors.password ? 'error-input input-style' : 'input-style'} type="password" name="password" id="password" bind:value={$form.password} />
 		{#if $errors.password}
 			<small>{$errors.password}</small>
 		{/if}

@@ -6,7 +6,8 @@ export const NAVBAR_MENU_START = [
 export const NAVBAR_MENU_FINISH = [
 	{ name: 'games', nameRu: 'мои игры' },
 	{ name: 'notification', nameRu: 'уведомления' },
-	{ name: 'account', nameRu: 'мой аккаунт' }
+	{ name: 'account', nameRu: 'мой аккаунт' },
+	{ name: 'logout', nameRu: 'выйти' }
 ];
 export const REGISTRATION = [
 	{ name: 'your name', nameRu: 'ваше имя' },

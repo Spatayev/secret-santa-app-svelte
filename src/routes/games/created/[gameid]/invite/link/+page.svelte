@@ -25,18 +25,23 @@
 </script>
 
 <main class="container">
-	<section>
-		<h3>Пригласить участников</h3>
+	<section class='form-section'>
+		<article class='title-section'>
+			<h3>Пригласить участников</h3>
+		</article>
 		<div>
 			<p>Скопируйте ссылку ниже и отправьте её своим друзьям.</p>
 			<p>После перехода по ссылке, участники смогут создать карточки для участия самостоятельно.</p>
 		</div>
 
 		<div class="styled-box">
-			<input type="text" bind:value={$url} readonly />
-			<button class="main-button" on:click={handleCopyToClipboard}
+			<input class='input-style' type="text" bind:value={$url} readonly />
+			<div class='center'>
+				<button class="primary-button" on:click={handleCopyToClipboard}
 				>{#if $copied}Скопировано!{:else}Копировать{/if}</button
-			>
+				>
+			</div>
+			
 		</div>
 	</section>
 

@@ -15,7 +15,11 @@
 				{/each}
 			{:else}
 				{#each NAVBAR_MENU_FINISH as navbar}
-					<li class="btn-list"><a href={`/${navbar.name}`} class="btn">{navbar.nameRu}</a></li>
+					{#if navbar.name === 'logout'}
+						<li class="btn-list" ><a data-sveltekit-reload href={`/${navbar.name}`} class="btn">{navbar.nameRu} </a></li>
+					{:else}
+						<li class="btn-list"><a href={`/${navbar.name}`} class="btn">{navbar.nameRu}</a></li>
+					{/if}
 				{/each}
 			{/if}
 		</ul>

@@ -14,7 +14,7 @@
 		</article>
 		<label for="name">
 			{CREATE_PAGE.gameName}
-			<input class='input-style' type="text" name="name" />
+			<input class={$errors.name ? 'error-input input-style' : 'input-style'} type="text" name="name" />
 			{#if $errors.name}
 				<small>{$errors.name}</small>
 			{/if}

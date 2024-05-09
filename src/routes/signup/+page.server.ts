@@ -6,9 +6,9 @@ import type { PageServerLoad, Actions } from './$types';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
-	login: z.string().min(1),
-	email: z.string().email(),
-	password: z.string().min(4)
+	login: z.string().min(1, 'Имя должно быть длинне 1 символа'),
+	email: z.string().email('Введите валидный email'),
+	password: z.string().min(4, 'Пароль должен быть длиннее 4 символов')
 });
 
 export const load: PageServerLoad = async () => {

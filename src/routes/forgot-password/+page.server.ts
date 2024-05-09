@@ -1,27 +1,25 @@
-import { redirect } from '@sveltejs/kit';
-import { fail, message, superValidate } from 'sveltekit-superforms';
+import type { PageServerLoad, Actions } from './$types';
+import { fail, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 
-const schema = z.object({
+const passSchema = z.object({
 	email: z.string().email()
 });
 
-export const load = async () => {
-	const form = await superValidate(zod(schema));
+export const load: PageServerLoad = async () => {
+	const form = await superValidate(zod(passSchema));
 
 	return { form };
 };
 
 export const actions = {
-	forgot: async ({ request }) => {
-		const form = await superValidate(request, zod(schema));
-		console.log('form', form);
+	forgot: async (request) => {
+		const form = await superValidate(request, zod(passSchema));
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		console.log('body', JSON.stringify(form.data.email));
-		const responce = await fetch(
+		const response = await fetch(
 			`http://158.160.21.73:8080/auth/forgot-password?email=${form.data.email}`,
 			{
 				method: 'POST',
@@ -31,14 +29,11 @@ export const actions = {
 				body: JSON.stringify(form.data)
 			}
 		);
-		if (!responce.ok) {
-			const badRes = await responce.text();
-			console.log('res', responce.status);
-
-			return message(form, badRes);
+		if (!response.ok) {
+			const badRes = await response.text();
+			return { badRes };
 		}
-		const data = await responce.json();
-		console.log('data', data);
-		return data;
+		const data = await response.json();
+		return { data };
 	}
-};
+} satisfies Actions;

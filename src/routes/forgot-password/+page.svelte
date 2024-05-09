@@ -1,21 +1,25 @@
 <script lang="ts">
-	import SuperDebug, { superForm } from 'sveltekit-superforms';
+	import { superForm } from 'sveltekit-superforms';
+	import type { PageData } from './$types';
 
-export let data;
+export let data: PageData;
 
 const { form, errors, message } = superForm(data.form);
 </script>
-<main>
-	<form method="POST" action="?/forgot">
+<main class='container'>
+	<form class='form-section' method="POST" action="?/forgot">
+		<article class='title-section'>
+			<h3>Восстановить доступ</h3>
+		</article>
 		<label for="email">
 			Ваш E-mail
-			<input type="email" name="email" bind:value={$form.email} />
+			<input type="email" class='input-style' name="email" bind:value={$form.email} />
 			{#if $errors.email}
 				<small>{$errors.email}</small>
 			{/if}
-			<button type="submit">send</button>
+			<div class='center'><button class='primary-btn' type="submit">Отправить</button></div>
 		</label>
-		{#if $message}
+	{#if $message}
 		<div>{$message}</div>
 	{/if}
 	</form>

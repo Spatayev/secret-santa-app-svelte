@@ -10,5 +10,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals = {
 		token: session
 	};
+	console.log(session);
 	return await resolve(event);
 };
