@@ -27,7 +27,17 @@ import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
   let isAuthor = false;
 
 // https://github.com/wobsoriano/svelte-sonner
-  import { Toaster, toast } from 'svelte-sonner'
+ /* import { Toaster, toast } from 'svelte-sonner'
+
+<button on:click={() => toast.success('Нажал My first toast')}>
+  Нажми получи ответ
+</button>
+
+<button on:click={() => toast.error('Нажал My Error toast')}>
+  Нажми получи ошибочный ответ
+</button>
+<Toaster richColors  />
+*/
 
 
 </script>
@@ -48,7 +58,11 @@ import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
 
 	  <form method="POST" action="?/start_game">
 
-
+			inviter_id
+			<input type="hidden" name="inviter_id" value="12345" />
+			{#if $errors.inviter_id}
+				<small>{$errors.inviter_id}</small>
+			{/if}
 
 
 		<div> Проверку на автора ввести и минимум на двоих игроков
@@ -64,34 +78,10 @@ import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
     </form>
 
 
-	  <form method="POST" action="?/show_all_user">
 
 
 
 
-		<div> Проверку на автора ввести и минимум на двоих игроков
-			<button type="submit">Показать всех игроков</button>
-		</div>
-
-            
-		{#if $message}
-			<div>{$message}</div>
-		{/if}
-
-
-    </form>
-
-
-
-
-<button on:click={() => toast.success('Нажал My first toast')}>
-  Нажми получи ответ
-</button>
-
-<button on:click={() => toast.error('Нажал My Error toast')}>
-  Нажми получи ошибочный ответ
-</button>
-<Toaster richColors  />
 
   </div>
 
