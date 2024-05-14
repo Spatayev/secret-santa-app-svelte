@@ -58,7 +58,7 @@ import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
 
 	  <form method="POST" action="?/start_game">
 
-			inviter_id
+			
 			<input type="hidden" name="inviter_id" value="12345" />
 			{#if $errors.inviter_id}
 				<small>{$errors.inviter_id}</small>
