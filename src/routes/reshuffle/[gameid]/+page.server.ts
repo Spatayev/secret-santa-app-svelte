@@ -45,7 +45,10 @@ export const actions = {
 		}
 		
 		try {
-		const response = await fetch(PUBLIC_BASE_URL + 'games/' + params.gameid + '/reshuffle/', {
+		const response = await fetch(
+			`http://158.160.21.73:8080/games/${params.gameid}/reshuffle`,
+
+			{
 			method: 'POST',
 			headers: {
 				'accept': '*/*',
@@ -77,22 +80,7 @@ export const actions = {
 		return message(form, error.message || 'reshuffle: Internal Server Error 500');
 
 	}
-  },
-
-  show_all_user: async ({ request, params, cookies  }) => {
-
-    
-		console.log('show_all_user');
-		console.log(cookies);
-
-
-        console.log('список участников до жеребьевки');
-        console.log('/gameuser/{gameId}/list-before-shuffle');
-
-        console.log('список участников после жеребьевки');
-        console.log('/gameuser/{gameId}/list-after-shuffle');
-
-
-        
   }
+
+
 };
