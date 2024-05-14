@@ -35,6 +35,6 @@ export const actions = {
 			return message(form, badRes);
 		}
 		const result = await response.json();
-		return { result };
+		return message(form, result);
 	}
 } satisfies Actions;

@@ -132,6 +132,9 @@ ul li a {
 small {
 	color: red;
 }
+.input-style.link-part {
+	width: 475px;
+}
 .input-style {
 	padding: 6px 12px;
 	font-size: 16px;
@@ -159,6 +162,9 @@ small {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.center.variants {
+	padding-top: 20px;
 }
 .sector {
 	padding-top: 10px;
@@ -241,4 +247,10 @@ h3 {
 	margin: 20px;
 	border: solid 2px var(--primary-btn-color);
 	border-radius: 5px;
+}
+.account-info {
+	padding: 5px;
+	margin-bottom: 10px;
+	border: solid 3px var(--primary-btn-color);
+	border-radius: 10px;
 }
