@@ -9,6 +9,8 @@ import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
+	inviter_id: z.string().min(2),
+
 });
 
  
@@ -35,7 +37,7 @@ export const actions = {
 
 		console.log(params.gameid);
 
-		
+		console.log(cookies.get('accessToken'));
 
 
 		if (!form.valid) {
@@ -43,7 +45,7 @@ export const actions = {
 		}
 		
 		try {
-		const response = await fetch(PUBLIC_BASE_URL + '/games/' + params.gameid + '/reshuffle/', {
+		const response = await fetch(PUBLIC_BASE_URL + 'games/' + params.gameid + '/reshuffle/', {
 			method: 'POST',
 			headers: {
 				'accept': '*/*',
@@ -51,16 +53,24 @@ export const actions = {
 			},
 			body: JSON.stringify({})
 		});
-		console.log('response accept');
-		console.log(response);
+		console.log('response .status');
+		console.log(response.status);
 
-		if (!response.ok) {
-			const errorText = await response.text();
-			return message(form, errorText);
+		if (response.status === 200 ) {
+			
+			const successText = await response.text();
+			console.log('successText');
+			console.log(successText);
+
+			return message(form, successText);
 		}
 		else {
-			const successText = await response.text();
-			return message(form, successText);
+			let errorText = await response.text();
+			errorText +=  'Ошибка: ' + response.status + ' ';
+			console.log('errorText');
+			console.log(errorText);
+
+			return message(form, errorText);
 		}
 
 	} catch(error) {
