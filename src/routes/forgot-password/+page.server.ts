@@ -36,6 +36,7 @@ export const actions = {
 			return message(form, badRes);
 		}
 		const data = await response.text();
-       return message(form, data); ;
+       return message(form, data); 
+
 	}
 } satisfies Actions;

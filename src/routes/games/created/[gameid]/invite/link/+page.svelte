@@ -35,34 +35,26 @@
 		</div>
 
 		<div class="styled-box">
-			<input class='input-style' type="text" bind:value={$url} readonly />
-			<div class='center'>
-				<button class="primary-button" on:click={handleCopyToClipboard}
+			<input class='input-style link-part' type="text" bind:value={$url} readonly />
+			<button disabled={$copied} class={$copied?'disabled':'primary-btn'} on:click={handleCopyToClipboard}
 				>{#if $copied}Скопировано!{:else}Копировать{/if}</button
 				>
-			</div>
-			
-		</div>
+			<div class='center'>
+				<button class='primary-btn'
+					on:click={() => {
+					goto('./card');
+				}}
+				>
+					Создать свою карточку
+				</button>
+				<button class='primary-btn'
+					on:click={() => {
+					goto('/');
+				}}
+				>
+					На главную страницу
+				</button>
 	</section>
-
-	<div>
-		<button
-			on:click={() => {
-				goto('./card');
-			}}
-		>
-			Создать свою карточку
-		</button>
-	</div>
-	<div>
-		<button
-			on:click={() => {
-				goto('/');
-			}}
-		>
-			На главную страницу
-		</button>
-	</div>
 </main>
 
 <style>

@@ -2,7 +2,7 @@
 	import { superForm } from 'sveltekit-superforms';
     import type { PageData, ActionData } from './$types';
     export let data: PageData;
-    const {form, errors, enhance} = superForm(data.form)
+    const {form, message, errors, enhance} = superForm(data.form)
 </script>
 
 <main class='container'>
@@ -26,5 +26,8 @@
         <div class = 'center'>
 			<button disabled = {!($form.confirmPassword === $form.newPassword)} class={!($form.confirmPassword === $form.newPassword)?'disabled': 'primary-btn'} type="submit">Подтвердить</button>
 		</div>
+        {#if $message}
+		    <div>{$message}</div>
+	    {/if}
     </form>
 </main>
