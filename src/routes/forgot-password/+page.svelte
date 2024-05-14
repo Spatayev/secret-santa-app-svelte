@@ -20,7 +20,7 @@ const { form, errors, message } = superForm(data.form);
 			<div class='center'><button class='primary-btn' type="submit">Отправить</button></div>
 		</label>
 	{#if $message}
-		<div>{$message}</div>
+		<div>{$message} </div>
 	{/if}
 	</form>
 </main>

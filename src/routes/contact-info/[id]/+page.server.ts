@@ -26,7 +26,7 @@ export const actions = {
 		}
 		console.log('body', JSON.stringify(form.data));
 		const response = await fetch(
-			`http://158.160.21.73:8080/gameuser/${id}/contact-info`,
+			`http://158.160.21.73:8080/gameuser/${await params.id}/contact-info`,
 			{
 				method: 'POST',	
 			    headers: {
@@ -43,7 +43,6 @@ export const actions = {
 			return message(form, badRes);
 		}
 		const data = await response.text();
-		// router.push(`/wish-list/`)
 
 		console.log('data', data );
 		return data;

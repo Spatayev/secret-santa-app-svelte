@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
@@ -34,7 +35,7 @@ export const actions = {
 			console.log('badRes', badRes);
 			return message(form, badRes);
 		}
-		const result = await response.json();
-		return { result };
+		const data = await response.text();
+       return message(form, data); ;
 	}
 } satisfies Actions;

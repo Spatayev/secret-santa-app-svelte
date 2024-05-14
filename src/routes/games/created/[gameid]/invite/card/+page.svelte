@@ -13,7 +13,7 @@
                 <p>{data.res.email}</p>
             </article> -->
             <article class='title-section'>
-			    <h3>Личные данные</h3>
+			    <h3>Контактные данные</h3>
 		    </article>
             <label for="userName">Ваш Логин</label>
             <input type="text" name='userName' >

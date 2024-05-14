@@ -3,6 +3,7 @@ import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
+import { redirect } from '@sveltejs/kit';
 
 const schema = z.object({
 	email: z.string(),
@@ -45,6 +46,6 @@ export const actions = {
 		// router.push(`/wish-list/`)
 
 		console.log('data', data );
-		return data;
+        throw redirect(302, `/wishlist/${params.gameid}`);
 	}
 } satisfies Actions;
