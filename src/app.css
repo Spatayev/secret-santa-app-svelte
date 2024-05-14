@@ -3,6 +3,7 @@
 :root {
 	--primary-btn-color: #ff6300;
 	--primary-bg-color: #coe3e5;
+	--primary-btn-grey: grey;
 	--paragraph-font-size: 1.5 rem;
 	--main-header-font-size: 4.7 rem;
 }
@@ -173,6 +174,14 @@ label {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.disabled {
+	background: var(--primary-btn-grey);
+	color: white;
+	border-radius: 10px;
+	padding: 20px 40px;
+	font-weight: 700;
+	font-size: var(--paragraph-font-size);
 }
 .primary-btn {
 	border: 2px solid var(--primary-btn-color);

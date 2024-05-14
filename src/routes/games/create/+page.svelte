@@ -12,13 +12,11 @@
 		<article class='title-section'>
 			<h3>{CREATE_PAGE.title}</h3>
 		</article>
-		<label for="name">
-			{CREATE_PAGE.gameName}
-			<input class={$errors.name ? 'error-input input-style' : 'input-style'} type="text" name="name" />
-			{#if $errors.name}
-				<small>{$errors.name}</small>
-			{/if}
-		</label>
+		<label for="name">{CREATE_PAGE.gameName}</label>
+		<input class={$errors.name ? 'error-input input-style' : 'input-style'} type="text" name="name" />
+		{#if $errors.name}
+			<small>{$errors.name}</small>
+		{/if}
 		<label for="priceLimitChecked">
 			{CREATE_PAGE.radioButton}
 			<input type="checkbox" name="priceLimitChecked" bind:checked={yes} />

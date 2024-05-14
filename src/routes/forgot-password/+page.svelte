@@ -7,7 +7,7 @@ export let data: PageData;
 const { form, errors, message } = superForm(data.form);
 </script>
 <main class='container'>
-	<form class='form-section' method="POST" action="?/forgot">
+	<form class='form-section' method="POST">
 		<article class='title-section'>
 			<h3>Восстановить доступ</h3>
 		</article>

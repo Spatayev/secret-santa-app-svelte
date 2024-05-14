@@ -1,5 +1,5 @@
 import type { PageServerLoad, Actions } from './$types';
-import { fail, superValidate } from 'sveltekit-superforms';
+import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 
@@ -14,7 +14,7 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions = {
-	forgot: async (request) => {
+	default: async (request) => {
 		const form = await superValidate(request, zod(passSchema));
 		if (!form.valid) {
 			return fail(400, { form });
@@ -31,9 +31,10 @@ export const actions = {
 		);
 		if (!response.ok) {
 			const badRes = await response.text();
-			return { badRes };
+			console.log('badRes', badRes);
+			return message(form, badRes);
 		}
-		const data = await response.json();
-		return { data };
+		const result = await response.json();
+		return { result };
 	}
 } satisfies Actions;

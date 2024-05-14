@@ -14,7 +14,6 @@
 			<div class='card'>
 				<h4>Пока что никого нет</h4>
 			</div>
-
 		{:else}
 			{#each data.res as players}
 				<div class='players-card'>
@@ -26,7 +25,8 @@
 		<div class='center'>
 			<button class='primary-btn'
 			on:click={() => {
-				goto('/games/created/' + data.gameid + '/invite');
+				console.log(data.gameid)
+				goto(`/games/created/${data.gameid}/invite`);
 			}}>Добавить участников</button
 		>
 		</div>

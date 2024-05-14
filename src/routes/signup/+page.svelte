@@ -1,7 +1,8 @@
 <script lang="ts">
-	import SuperDebug, { superForm } from 'sveltekit-superforms';
+	import { superForm } from 'sveltekit-superforms';
 	import {fly} from 'svelte/transition'
-	export let data;
+	import type { PageData } from './$types';
+	export let data : PageData;
 
 	// Client API:
 	const { form, errors, message } = superForm(data.form);
