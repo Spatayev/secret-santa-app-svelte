@@ -1,30 +1,23 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
-
-	export let data;
+	import type { PageData, ActionData } from './$types';
+	export let data: PageData;
 
 	// Client API:
 	const { form, errors, message } = superForm(data.form);
 </script>
 
 <main class="container">
-
-        <div>
-          <h5>Подтвердить приглашение</h5>
-        </div>
-
-	<form method="POST" action="?/accept">
-
-		
-			inviter_id
+	<form class ='form-section' method="POST" action="?/accept">
+			<article class='title-section'>
+            	<h3>Подтвердить приглашение</h3>
+       		 </article>
 			<input type="hidden" name="inviter_id" value="12345" />
 			{#if $errors.inviter_id}
 				<small>{$errors.inviter_id}</small>
 			{/if}
-		
-
-		<div>
-			<button type="submit">Подтвердить</button>
+		<div class='center'>
+			<button class='primary-btn' type="submit">Подтвердить</button>
 		</div>
 		{#if $message}
 			<div>{$message}</div>
@@ -32,10 +25,3 @@
 	</form>
 </main>
 
-<style>
-	form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-</style>

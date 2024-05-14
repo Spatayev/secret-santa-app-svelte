@@ -10,13 +10,13 @@
         <article class='title-section'>
             <h3>Восстановление пароля</h3>
         </article>
-        <label for="password">Введите новый пароль</label>
-        <input class={$errors.newPassword ? 'error-input input-style' : 'input-style'} type="password" name='password' bind:value={$form.newPassword}>
+        <label for="newPassword">Введите новый пароль</label>
+        <input class={$errors.newPassword ? 'error-input input-style' : 'input-style'} type="password" name='newPassword' bind:value={$form.newPassword}>
         {#if $errors.newPassword}
 				<small>{$errors.newPassword}</small>
 			{/if}
-        <label for="checkpass">Повторите пароль</label>
-        <input class={$errors.confirmPassword ? 'error-input input-style' : 'input-style'} type="password" name='checkpass' bind:value={$form.confirmPassword}>
+        <label for="confirmPassword">Повторите пароль</label>
+        <input class={$errors.confirmPassword ? 'error-input input-style' : 'input-style'} type="password" name='confirmPassword' bind:value={$form.confirmPassword}>
         {#if $errors.confirmPassword}
 				<small>{$errors.confirmPassword}</small>
 			{/if}

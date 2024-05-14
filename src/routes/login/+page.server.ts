@@ -47,6 +47,11 @@ export const actions = {
 			sameSite: 'strict',
 			maxAge: 120 * 60 * 24 * 30
 		});
-		throw redirect(302, '/');
+		const checkRoad = cookies.get('pageRoad');
+		if (!checkRoad) {
+			throw redirect(302, '/');
+		}
+		cookies.delete('pageRoad', { path: '/' });
+		throw redirect(302, `${checkRoad}`);
 	}
 } satisfies Actions;

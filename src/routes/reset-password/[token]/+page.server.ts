@@ -2,6 +2,7 @@ import { z } from 'zod';
 import type { PageServerLoad, Actions } from './$types';
 import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
+
 const newPassSchema = z.object({
 	newPassword: z.string().min(4),
 	confirmPassword: z.string().min(4)
@@ -26,7 +27,7 @@ export const actions = {
 			console.log(badRes);
 			return message(form, badRes);
 		}
-		const result = await response.json();
+		const result = await response.text();
 		console.log(result);
 		return message(form, result);
 	}

@@ -4,7 +4,7 @@
 	export let existGames;
 </script>
 
-<div class='contentBox'>
+<div class='content-box'>
 	<h3 class="title game-title">{existGames.name}</h3>
 	<div class='img-box'>
 		<img class='card-img' src={Santa} alt="santa img">

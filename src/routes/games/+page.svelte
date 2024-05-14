@@ -16,12 +16,16 @@
 				{GAME_PAGE.header}
 			</h3>
 		</article>
+		
 		{#if data.res.length > 0}
-			{#each data.res as existGames}
-				<div class='card'>
-					<ExistGames {existGames} />
-				</div>
-			{/each}
+			<div class=games>
+				{#each data.res as existGames}
+					<div class='card'>
+						<ExistGames {existGames} />
+					</div>
+				{/each}
+			</div>
+			
 		{:else}
 			<div class='card'>
 				<div class='div-img'>
