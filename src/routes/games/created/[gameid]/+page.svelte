@@ -10,15 +10,15 @@
 			<article class='title-section'>
 				<h2>Игра создана</h2>
 			</article>
-		{#if (!data.res)}
+		{#if (!data.result)}
 			<div class='card'>
 				<h4>Пока что никого нет</h4>
 			</div>
 		{:else}
-			{#each data.res as players}
+			{#each data.result as players}
 				<div class='players-card'>
 					<h4>{players.user}</h4>
-					<p><span>Status:</span>{players.invitationStatus}</p>
+					<p><span>Status:</span> {players.invitationStatus}</p>
 				</div>
 			{/each}
 		{/if}

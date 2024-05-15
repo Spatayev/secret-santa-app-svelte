@@ -1,9 +1,3 @@
-// export const load: PageLoad = ({ params }) => {
-// 	console.log('params:' + params.gameid);
-// 	return {
-// 		gameid: params.gameid
-// 	};
-// };
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, cookies }) => {
@@ -22,6 +16,7 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
 		console.log('badres', badRes);
 		return { badRes };
 	}
+	const result = await response.json();
 	const gameid = params.gameid;
-	return { gameid };
+	return { gameid, result };
 };

@@ -159,6 +159,7 @@ small {
 }
 .center {
 	padding-top: 50px;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -255,7 +256,9 @@ h3 {
 	border-radius: 10px;
 }
 .games {
+	max-width: 60vw;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	gap: 30px;
@@ -266,4 +269,17 @@ h3 {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
+}
+
+.players-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+	margin: 5px;
+	border: 3px solid var(--primary-btn-color);
+	border-radius: 10px;
+}
+.players-card p span {
+	font-weight: 700;
 }
