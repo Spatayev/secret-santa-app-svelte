@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from '../signup/$types';
 import { message, fail, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
@@ -28,6 +29,11 @@ export const load: PageServerLoad = async ({ cookies }) => {
 export const actions = {
 	change: async ({ cookies, request }) => {
 		const form = await superValidate(request, zod(schemaAcc));
+
+		console.log('form.data');
+		console.log(form.data);
+
+
 		if (!form.valid) {
 			return fail(400, { form });
 		}
@@ -43,7 +49,15 @@ export const actions = {
 			const badRes = await responce.text();
 			return message(form, badRes);
 		}
-		const res = await responce.json();
-		return { res };
+		const res = await responce.text();
+
+		cookies.delete('accessToken', { path: '/' });
+		cookies.delete('refreshToken', { path: '/' });
+		cookies.delete('gameId', { path: '/' });
+		
+		throw redirect(302, `\login`);
+
+
+		return { res : res};
 	}
 } satisfies Actions;
