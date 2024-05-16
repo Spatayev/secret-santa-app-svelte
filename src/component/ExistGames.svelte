@@ -11,5 +11,5 @@
 	</div>
 	<small class='about-game'>{GAME_COMP[existGames.role]}</small>
 	<small class='about-game'>{`${GAME_COMP.quantity} ${existGames.participantCount}`}</small>
-	<a class='btn-secret' href={`/games/created/${existGames.id}`}>Пригласить участников</a>
+	<a class='btn-secret' href={`/games/created/${existGames.id}`}>Список участников</a>
 </div>

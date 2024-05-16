@@ -1,4 +1,3 @@
-
 import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
@@ -6,19 +5,19 @@ import type { Actions, PageServerLoad } from './$types';
 
 const schema = z.object({
 	email: z.string(),
-    userName:z.string().min(1),
-    phoneNumber:z.number().min(1)
+	userName: z.string().min(1),
+	phoneNumber: z.number().min(1)
 });
 
-export const load:PageServerLoad = async () => {
+export const load: PageServerLoad = async () => {
 	const form = await superValidate(zod(schema));
 
 	return { form };
 };
 
 export const actions = {
-	contact: async ({ request ,params ,cookies}) => {
-        const {id} = params
+	contact: async ({ request, params, cookies }) => {
+		const { id } = params;
 		const form = await superValidate(request, zod(schema));
 		console.log('form', form);
 		if (!form.valid) {
@@ -28,10 +27,10 @@ export const actions = {
 		const response = await fetch(
 			`http://158.160.21.73:8080/gameuser/${await params.id}/contact-info`,
 			{
-				method: 'POST',	
-			    headers: {
+				method: 'POST',
+				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${cookies.get('accessToken')}`,
+					Authorization: `Bearer ${cookies.get('accessToken')}`
 				},
 				body: JSON.stringify(form.data)
 			}
@@ -44,7 +43,7 @@ export const actions = {
 		}
 		const data = await response.text();
 
-		console.log('data', data );
+		console.log('data', data);
 		return data;
 	}
 } satisfies Actions;

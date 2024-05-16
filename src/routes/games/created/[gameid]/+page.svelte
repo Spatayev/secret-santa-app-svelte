@@ -21,11 +21,15 @@
 					<p><span>Status:</span> {players.invitationStatus}</p>
 				</div>
 			{/each}
+			{#if data.result.length > 2 && data.isAcceptable}
+				<div class='center' >
+					<button on:click={()=>{goto(`../../reshuffle/${data.gameid}/`)}} class='primary-btn'>Провести жеребьевку</button>
+				</div>
+			{/if}
 		{/if}
 		<div class='center'>
 			<button class='primary-btn'
 			on:click={() => {
-				console.log(data.gameid)
 				goto(`/games/created/${data.gameid}/invite`);
 			}}>Добавить участников</button
 		>
