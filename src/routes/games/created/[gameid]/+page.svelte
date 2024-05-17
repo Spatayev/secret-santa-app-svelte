@@ -10,7 +10,7 @@
 			<article class='title-section'>
 				<h2>Игра создана</h2>
 			</article>
-		{#if (!data.result)}
+		{#if (data.result.length < 2)}
 			<div class='card'>
 				<h4>Пока что никого нет</h4>
 			</div>

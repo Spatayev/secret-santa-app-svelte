@@ -167,11 +167,15 @@ small {
 .center.variants {
 	padding-top: 20px;
 }
-.sector {
+.center .sector {
 	padding-top: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.center.row {
+	flex-direction: column;
+	padding-top: 30px;
 }
 label {
 	padding-top: 5px;
@@ -189,6 +193,14 @@ label {
 	padding: 20px 40px;
 	font-weight: 700;
 	font-size: var(--paragraph-font-size);
+}
+.wish-lists {
+	padding-bottom: 5px;
+}
+.primary-btn.small {
+	min-width: 400px;
+	margin: 10px;
+	padding: 10px 20px;
 }
 .primary-btn {
 	border: 2px solid var(--primary-btn-color);

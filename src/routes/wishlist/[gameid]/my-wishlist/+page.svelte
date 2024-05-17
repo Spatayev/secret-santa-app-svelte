@@ -3,8 +3,8 @@
        export let data:PageData;
    </script>
    
-   <div class="center">
-   
+   <main class="container">
+   <section class='form-section'>
       {#if data.data}
       {#each data.data as my}
       <ul>
@@ -17,7 +17,9 @@
       </ul>
      {/each}
       {/if}
-   </div>
+   </section>
+      
+   </main>
    
    
    <style>
