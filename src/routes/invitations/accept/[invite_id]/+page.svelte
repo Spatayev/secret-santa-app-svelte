@@ -4,7 +4,7 @@
 	export let data: PageData;
 
 	// Client API:
-	const { form, errors, message } = superForm(data.form);
+	const { errors } = superForm(data.form);
 </script>
 
 <main class="container">
@@ -19,9 +19,6 @@
 		<div class='center'>
 			<button class='primary-btn' type="submit">Подтвердить</button>
 		</div>
-		{#if $message}
-			<div>{$message}</div>
-		{/if}
 	</form>
 </main>
 
