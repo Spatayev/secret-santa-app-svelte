@@ -5,6 +5,8 @@ import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { BASE_URL } from '$env/static/private';
 const phoneRegex = new RegExp(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/);
+import { BASE_URL } from '$env/static/private';
+
 const schema = z.object({
 	email: z.string(),
 	userName: z.string().min(1),
@@ -37,9 +39,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 		console.log('body', JSON.stringify(form.data));
-		const response = await fetch(
-			`http://158.160.21.73:8080/gameuser/${await params.gameid}/contact-info`,
-			{
+		const response = await fetch(`${BASE_URL}gameuser/${params.gameid}/contact-info` , {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
