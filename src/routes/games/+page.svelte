@@ -47,5 +47,9 @@
 	</section>
 </main>
 <style>
-	
-</style>
+	@media  (min-width: 900px){
+	.form-section {
+	  margin-top: 1rem;
+	}
+  }
+  </style>
