@@ -2,6 +2,7 @@ import { fail, message, superValidate } from 'sveltekit-superforms';
 import type { PageServerLoad, Actions } from './$types';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
+import { BASE_URL } from '$env/static/private';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
@@ -24,9 +25,8 @@ export const actions = {
 		}
 
 		try {
-			const response = await fetch(
-				'http://158.160.21.73:8080/invitations/accept/' + params.invite_id,
-				{
+
+			const response = await fetch( `${BASE_URL}invitations/accept/ ${params.invite_id}`, {
 					method: 'POST',
 					headers: {
 						accept: '*/*',
