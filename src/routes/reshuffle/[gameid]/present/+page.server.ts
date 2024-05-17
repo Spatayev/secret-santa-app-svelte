@@ -1,8 +1,8 @@
 import type { PageServerLoad } from './$types';
+import { BASE_URL } from '$env/static/private';
+
 export const load: PageServerLoad = async ({ cookies, params }) => {
-	const response = await fetch(
-		`http://158.160.21.73:8080/wishlist/${params.gameid}/my-giftee-wishlist`,
-		{
+	const response = await fetch( `${BASE_URL}wishlist/${params.gameid}/my-giftee-wishlist`, {
 			method: 'GET',
 			headers: {
 				Authorization: `Bearer ${cookies.get('accessToken')}`,
