@@ -5,23 +5,17 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 import { BASE_URL } from '$env/static/private';
 
-
-
-
-
 const schemaAcc = z.object({
 	newLogin: z.string().min(1),
 	newEmail: z.string().email()
 });
 export const load: PageServerLoad = async ({ cookies }) => {
-
 	console.log('static/private BASE_URL');
 	console.log(`${BASE_URL}/settings/user-info`);
 	console.log('BASE_URL');
 
-
 	const form = await superValidate(zod(schemaAcc));
-	const response = await fetch( `${BASE_URL}settings/user-info`, {
+	const response = await fetch(`${BASE_URL}settings/user-info`, {
 		method: 'GET',
 		headers: {
 			Authorization: `Bearer ${cookies.get('accessToken')}`,
@@ -44,11 +38,10 @@ export const actions = {
 		console.log('form.data');
 		console.log(form.data);
 
-
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		const responce = await fetch(`${BASE_URL}settings/update-login-email` , {
+		const responce = await fetch(`${BASE_URL}settings/update-login-email`, {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${cookies.get('accessToken')}`,
@@ -60,15 +53,10 @@ export const actions = {
 			const badRes = await responce.text();
 			return message(form, badRes);
 		}
-		const res = await responce.text();
-
 		cookies.delete('accessToken', { path: '/' });
 		cookies.delete('refreshToken', { path: '/' });
 		cookies.delete('gameId', { path: '/' });
-		
-		throw redirect(302, `\login`);
 
-
-		return { res : res};
+		throw redirect(302, `/login`);
 	}
 } satisfies Actions;

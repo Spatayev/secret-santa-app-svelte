@@ -3,6 +3,7 @@ import type { PageServerLoad, Actions } from './$types';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 import { BASE_URL } from '$env/static/private';
+import { redirect } from '@sveltejs/kit';
 
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
@@ -23,31 +24,25 @@ export const actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
+		const response = await fetch(`${BASE_URL}invitations/accept/${params.invite_id}`, {
+			method: 'POST',
+			headers: {
+				accept: '*/*',
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${cookies.get('accessToken')}`
+			},
+			body: JSON.stringify({})
+		});
+		console.log('response accept');
+		console.log(response);
 
-		try {
-
-			const response = await fetch( `${BASE_URL}invitations/accept/${params.invite_id}`, {
-					method: 'POST',
-					headers: {
-						accept: '*/*',
-						'Content-Type': 'application/json',
-						Authorization: `Bearer ${cookies.get('accessToken')}`
-					},
-					body: JSON.stringify({})
-				}
-			);
-			console.log('response accept');
-			console.log(response);
-
-			if (!response.ok) {
-				const errorText = await response.text();
-				return message(form, errorText);
-			} else {
-				const successText = await response.text();
-				return message(form, successText);
-			}
-		} catch (error) {
-			return message(form, error.message || 'Send: Internal Server Error 500');
+		if (!response.ok) {
+			const errorText = await response.text();
+			return message(form, errorText);
+		} else {
+			const successText = await response.json();
+			console.log(successText['gameId']);
+			throw redirect(302, `../../wishlist/${successText['gameId']}/`);
 		}
 	}
 } satisfies Actions;
