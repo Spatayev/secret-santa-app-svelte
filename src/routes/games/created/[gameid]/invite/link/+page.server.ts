@@ -1,7 +1,8 @@
 import type { PageServerLoad } from '../link/$types';
+import { BASE_URL } from '$env/static/private';
 export const load: PageServerLoad = async ({ params, cookies }) => {
 	const responce = await fetch(
-		`http://158.160.21.73:8080/invitations/generate-link?gameId=${await params.gameid}`,
+		`${BASE_URL}invitations/generate-link?gameId=${await params.gameid}`,
 		{
 			method: 'GET',
 			headers: {
