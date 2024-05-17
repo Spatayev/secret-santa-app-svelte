@@ -26,7 +26,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 
-			const response = await fetch( `${BASE_URL}auth/register`, {
+		const response = await fetch(`${BASE_URL}auth/register`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

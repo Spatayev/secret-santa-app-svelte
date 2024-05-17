@@ -25,8 +25,7 @@ export const actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		const response = await fetch( `${BASE_URL}auth/login/`, {
-
+		const response = await fetch(`${BASE_URL}auth/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
