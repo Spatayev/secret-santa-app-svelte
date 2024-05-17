@@ -4,8 +4,12 @@
   </script>
   
   <main class='container'>
+    
     <form class='form-section' method="POST">
-      <p>{data.result.gifteeEmail}</p>
-      <p>{data.result.wishlistDescriptions}</p>
+        <article class='title-section'>
+            <h3>Подопечный</h3>
+        </article>
+        <p>{data.result.gifteeEmail}</p>
+        <p>{data.result.wishlistDescriptions}</p>
     </form>
 </main>

@@ -16,12 +16,12 @@
 			    <h3>Личные данные</h3>
 		    </article>
             <label for="newLogin">Ваше Имя</label>
-            <input class={$errors.newLogin ? 'error-input input-style' : 'input-style'} type="text" name='newLogin' placeholder={data.res.login}>
+            <input class={$errors.newLogin ? 'error-input input-style' : 'input-style'} type="text" name='newLogin' value={data.res.login}>
             {#if $errors.newLogin}
 			    <small>{$errors.newLogin}</small>
 		    {/if}
             <label for="newEmail">Ваш E-mail</label>
-            <input class={$errors.newEmail ? 'error-input input-style' : 'input-style'} type="email" name='newEmail' placeholder={data.res.email}>
+            <input class={$errors.newEmail ? 'error-input input-style' : 'input-style'} type="email" name='newEmail' value={data.res.email}>
             {#if $errors.newEmail}
 			    <small>{$errors.newEmail}</small>
 		    {/if}

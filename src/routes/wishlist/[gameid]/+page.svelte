@@ -1,6 +1,6 @@
 <script lang='ts'>
    import { superForm } from 'sveltekit-superforms';
-   import type { PageData, ActionData } from './$types';
+   import type { PageData} from './$types';
 
    export let data: PageData;
 
