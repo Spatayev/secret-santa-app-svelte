@@ -3,6 +3,7 @@ import type { PageServerLoad, Actions } from '../signup/$types';
 import { message, fail, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
+import { PUBLIC_BASE_URL } from '$env/static/public';
 
 const schemaAcc = z.object({
 	newLogin: z.string().min(1),
@@ -10,7 +11,7 @@ const schemaAcc = z.object({
 });
 export const load: PageServerLoad = async ({ cookies }) => {
 	const form = await superValidate(zod(schemaAcc));
-	const response = await fetch('http://158.160.21.73:8080/settings/user-info', {
+	const response = await fetch(PUBLIC_BASE_URL + '/settings/user-info', {
 		method: 'GET',
 		headers: {
 			Authorization: `Bearer ${cookies.get('accessToken')}`,
