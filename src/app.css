@@ -158,7 +158,7 @@ small {
 	box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }
 .center {
-	padding-top: 50px;
+	padding-top: 20px;
 
 	display: flex;
 	align-items: center;

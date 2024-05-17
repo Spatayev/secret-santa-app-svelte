@@ -6,11 +6,14 @@
 
 <main class="container">
 	<section class='form-section'>
-		
-			<article class='title-section'>
-				<h2>Игра создана</h2>
-			</article>
-		{#if (data.result.length < 2)}
+		<article class='title-section'>
+			<h2>Игра создана</h2>
+		</article>
+		{#if data.isFinished}
+			<div class='card'>
+				<h4>Жербьевка завершена</h4>
+			</div>
+		{:else if (data.result.length < 2)}
 			<div class='card'>
 				<h4>Пока что никого нет</h4>
 			</div>
@@ -27,13 +30,19 @@
 				</div>
 			{/if}
 		{/if}
-		<div class='center'>
-			<button class='primary-btn'
-			on:click={() => {
+		{#if !data.isFinished}
+		  	<div class='center'>
+				<button class='primary-btn'
+				on:click={() => {
 				goto(`/games/created/${data.gameid}/invite`);
-			}}>Добавить участников</button
-		>
-		</div>
+				}}>Добавить участников</button
+			>
+			</div>
+		{:else}
+			<div class='center'>
+				<button class='primary-btn' on:click={()=>{goto(`../../reshuffle/${data.gameid}/present`)}}>Узнать подопечного</button>
+			</div>
+		{/if}
+		
 	</section>
-	
 </main>

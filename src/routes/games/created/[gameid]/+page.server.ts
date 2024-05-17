@@ -20,5 +20,7 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
 	const gameid = params.gameid;
 	console.log('result', result);
 	const isAcceptable = result.filter((ready) => ready.invitationStatus === 'ACCEPTED').length > 1;
-	return { gameid, result, isAcceptable };
+	const isFinished =
+		result.filter((finished) => finished.status === 'MATCHING_COMPLETED').length > 1;
+	return { gameid, result, isAcceptable, isFinished };
 };
