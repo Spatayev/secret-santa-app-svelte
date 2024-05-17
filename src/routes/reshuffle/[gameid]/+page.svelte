@@ -1,8 +1,8 @@
 
-<script>
+<script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
-
-	export let data;
+ import type {PageData} from './$types'
+	export let data:PageData;
 
 	// Client API:
 	const { form, errors, message } = superForm(data.form);
@@ -11,13 +11,13 @@
 
   const gameid = $page.params.gameid;
 
-import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
+// import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
 
   console.log('PUBLIC_BASE_URL');
-  console.log(PUBLIC_BASE_URL);
+  // console.log(PUBLIC_BASE_URL);
 
   console.log('PUBLIC_language');
-  console.log(PUBLIC_language);
+  // console.log(PUBLIC_language);
 
 
   console.log($page.params);
@@ -48,7 +48,11 @@ import { PUBLIC_BASE_URL, PUBLIC_language } from '$env/static/public';
         <h5 class="text-center">Жеребьёвка.</h5>
         <p>Связаться с Организатором</p>
       </div>
-
+      <div class='players-card'>
+        <h4>Жеребьёвка.</h4>
+               <p>Связаться с Организатором</p>
+      
+      </div>
 
       <div class="stack">
         <a href="/wishlist/{gameid}/my-giftee-wishlist">Узнать подопечного</a>
