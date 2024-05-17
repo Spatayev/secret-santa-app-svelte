@@ -3,12 +3,22 @@
 	import type { PageData } from './$types';
 	import { Toaster, toast } from 'svelte-sonner'
 
-
+	import { onMount } from 'svelte';
 
 
 export let data: PageData;
 
 const { form, errors, message } = superForm(data.form);
+
+console.log('message');
+
+console.log(message);
+
+onMount(() => {
+	toast.success("It works");
+})
+
+
 </script>
 <Toaster richColors  />
 
@@ -30,12 +40,5 @@ const { form, errors, message } = superForm(data.form);
 	{/if}
 	</form>
 
-<button on:click={() => toast.success('success')}>
-  Нажми получи ответ
-</button>
-
-<button on:click={() => toast.error(' My Error ')}>
-  Нажми получи ошибочный ответ
-</button>
 
 </main>
