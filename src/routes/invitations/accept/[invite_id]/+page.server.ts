@@ -26,7 +26,7 @@ export const actions = {
 
 		try {
 
-			const response = await fetch( `${BASE_URL}invitations/accept/ ${params.invite_id}`, {
+			const response = await fetch( `${BASE_URL}invitations/accept/${params.invite_id}`, {
 					method: 'POST',
 					headers: {
 						accept: '*/*',
