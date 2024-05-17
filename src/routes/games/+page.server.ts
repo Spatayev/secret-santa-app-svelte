@@ -1,6 +1,8 @@
 import type { PageServerLoad } from './$types';
+import { BASE_URL } from '$env/static/private';
+
 export const load: PageServerLoad = async ({ cookies }) => {
-	const responce = await fetch('http://158.160.21.73:8080/games/mygames', {
+		const responce = await fetch( `${BASE_URL}games/mygames`, {
 		method: 'GET',
 		headers: {
 			Authorization: `Bearer ${cookies.get('accessToken')}`,

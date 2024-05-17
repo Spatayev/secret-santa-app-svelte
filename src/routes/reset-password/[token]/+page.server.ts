@@ -2,6 +2,7 @@ import { z } from 'zod';
 import type { PageServerLoad, Actions } from './$types';
 import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
+import { BASE_URL } from '$env/static/private';
 
 const newPassSchema = z.object({
 	newPassword: z.string().min(4),
@@ -17,7 +18,7 @@ export const actions = {
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		const response = await fetch(`http://158.160.21.73:8080/auth/reset-password/${params.token}`, {
+		const response = await fetch( `${BASE_URL}auth/reset-password/${params.token}`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(form.data)
