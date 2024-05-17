@@ -38,22 +38,22 @@ export const actions = {
 			return fail(400, { form });
 		}
 		console.log('body', JSON.stringify(form.data));
-		const response = await fetch(`${BASE_URL}gameuser/${params.gameid}/contact-info` , {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `Bearer ${cookies.get('accessToken')}`
-				},
-				body: JSON.stringify(form.data)
-			}
-		);
+		const response = await fetch(`${BASE_URL}gameuser/${params.gameid}/contact-info`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${cookies.get('accessToken')}`
+			},
+			body: JSON.stringify(form.data)
+		});
 		if (!response.ok) {
 			const badRes = await response.text();
-			console.log('res', response.status);
+			console.log('badRes');
 
 			return message(form, badRes);
 		}
 		const data = await response.text();
+		console.log('res', data);
 		// router.push(`/wish-list/`)
 
 		console.log('data', data);

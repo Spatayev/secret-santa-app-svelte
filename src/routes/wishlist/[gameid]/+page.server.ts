@@ -15,7 +15,7 @@ const schema = z.object({
 	name6: z.string().min(2).optional(),
 	name7: z.string().min(2).optional(),
 	name8: z.string().min(2).optional(),
-	name9: z.string().min(2).optional(),
+	name9: z.string().min(2).optional()
 });
 
 export const load = async () => {
@@ -26,30 +26,28 @@ export const load = async () => {
 };
 
 export const actions = {
-	save_gifts: async ({ request, params, cookies  }) => {
+	save_gifts: async ({ request, params, cookies }) => {
 		const form = await superValidate(request, zod(schema));
 
 		console.log('save_gifts');
 		console.log(cookies.get('accessToken'));
 
-		
 		const jsonData = form.data;
 		const dataArray = Object.values(jsonData);
-		const filteredDataArray = dataArray.filter(value => value !== undefined);
+		const filteredDataArray = dataArray.filter((value) => value !== undefined);
 
-		console.log(JSON.stringify(filteredDataArray)); 
+		console.log(JSON.stringify(filteredDataArray));
 
 		if (!form.valid) {
 			return fail(400, { form });
 		}
-		
-		try {
-			const responce = await fetch(`${BASE_URL}wishlist/${params.gameid}/create-wishlist` , {
+
+		const response = await fetch(`${BASE_URL}wishlist/${params.gameid}/create-wishlist`, {
 			method: 'POST',
 			headers: {
-				'accept': '*/*',
+				accept: '*/*',
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${cookies.get('accessToken')}`,
+				Authorization: `Bearer ${cookies.get('accessToken')}`
 			},
 			body: JSON.stringify(filteredDataArray)
 		});
@@ -58,18 +56,9 @@ export const actions = {
 
 		if (!response.ok) {
 			const errorText = await response.text();
-			return message(form, errorText  || 'Gift: Internal Server Error 400');
+			return message(form, errorText || 'Gift: Internal Server Error 400');
+		} else {
+			throw redirect(302, `/wishlist/${params.gameid}/card-created`);
 		}
-		else {
-			const successText = await response.text();
-			return message(form, successText || 'Add Gift: success');
-			//  redirect(302, `/wishlist/${params.gameid}/card-created`);
-
-		}
-
-	} catch(error) {
-		return message(form, error.message || 'Gift: Internal Server Error 500');
-
 	}
-  }
 };
