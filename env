@@ -1,0 +1,5 @@
+PUBLIC_BASE_URL="http://158.160.21.73:8080/"
+BASE_URL="http://158.160.21.73:8080/"
+PUBLIC_language="english"
+sess_cookie_name= 'my_session'
+sess_expiration= 7200
