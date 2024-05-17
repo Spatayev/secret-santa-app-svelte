@@ -1,11 +1,17 @@
 <script lang="ts">
 	import { superForm } from 'sveltekit-superforms';
 	import type { PageData } from './$types';
+	import { Toaster, toast } from 'svelte-sonner'
+
+
+
 
 export let data: PageData;
 
 const { form, errors, message } = superForm(data.form);
 </script>
+<Toaster richColors  />
+
 <main class='container'>
 	<form class='form-section' method="POST">
 		<article class='title-section'>
@@ -23,4 +29,13 @@ const { form, errors, message } = superForm(data.form);
 		<div>{$message} </div>
 	{/if}
 	</form>
+
+<button on:click={() => toast.success('success')}>
+  Нажми получи ответ
+</button>
+
+<button on:click={() => toast.error(' My Error ')}>
+  Нажми получи ошибочный ответ
+</button>
+
 </main>
