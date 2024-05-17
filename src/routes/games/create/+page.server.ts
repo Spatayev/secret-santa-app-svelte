@@ -2,6 +2,8 @@ import { redirect } from '@sveltejs/kit';
 import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
+import { BASE_URL } from '$env/static/private';
+
 // Define outside the load function so the adapter can be cached
 const schema = z.object({
 	name: z.string().min(1),
@@ -22,7 +24,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 		console.log(JSON.stringify(form.data));
-		const responce = await fetch('http://158.160.21.73:8080/games/create-game', {
+		const responce = await fetch( `${BASE_URL}games/create-game`, {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${cookies.get('accessToken')}`,

@@ -2,6 +2,7 @@ import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
+import { BASE_URL } from '$env/static/private';
 
 const schema = z.object({
 	email: z.string(),
@@ -24,9 +25,7 @@ export const actions = {
 			return fail(400, { form });
 		}
 		console.log('body', JSON.stringify(form.data));
-		const response = await fetch(
-			`http://158.160.21.73:8080/gameuser/${await params.id}/contact-info`,
-			{
+		const response = await fetch( `${BASE_URL}gameuser${await params.id}/contact-info`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
