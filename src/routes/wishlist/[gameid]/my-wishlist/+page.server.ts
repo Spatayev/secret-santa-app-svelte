@@ -1,4 +1,6 @@
 import type { PageServerLoad } from './$types';
+import { BASE_URL } from '$env/static/private';
+
 type Props={
 	id: string,
     gameId: string,
@@ -7,7 +9,8 @@ type Props={
     email: string
   }|undefined|null
 export const load: PageServerLoad = async ({ cookies ,params}) => {
-	const responce = await fetch(`http://158.160.21.73:8080/wishlist/${params.gameid}/my-wishlist`, {
+		const responce = await fetch(`${BASE_URL}wishlist/${params.gameid}/my-wishlist` , {
+
 		method: 'GET',
 		headers: {
 			Authorization: `Bearer ${cookies.get('accessToken')}`,
