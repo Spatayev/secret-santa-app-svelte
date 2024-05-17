@@ -5,7 +5,6 @@ import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { BASE_URL } from '$env/static/private';
 const phoneRegex = new RegExp(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/);
-import { BASE_URL } from '$env/static/private';
 
 const schema = z.object({
 	email: z.string(),
