@@ -1,7 +1,7 @@
 import type { PageServerLoad } from '../link/$types';
 import { BASE_URL } from '$env/static/private';
 export const load: PageServerLoad = async ({ params, cookies }) => {
-	const response = await fetch(`${BASE_URL}gameuser/${await params.gameid}/list-before-shuffle`, {
+	const response = await fetch(`${BASE_URL}gameuser/${params.gameid}/list-before-shuffle`, {
 		method: 'POST',
 		headers: {
 			Authorization: `Bearer ${cookies.get('accessToken')}`,
