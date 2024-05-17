@@ -4,6 +4,7 @@ import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { z } from 'zod';
 import type { PageServerLoad } from '../$types';
+import { BASE_URL } from '$env/static/private';
 
 // Define outside the load function so the adapter can be cached
 
@@ -65,10 +66,7 @@ export const actions = {
 			}
 
 			console.log(JSON.stringify(invitations));
-
-			const response = await fetch(
-				`http://158.160.21.73:8080/invitations/${request.params.gameid}/send`,
-				{
+	const response = await fetch( `${BASE_URL}invitations/${request.params.gameid}/send`, {
 					method: 'POST',
 					headers: {
 						accept: '*/*',
