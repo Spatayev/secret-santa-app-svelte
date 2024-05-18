@@ -26,9 +26,6 @@
 			>
 				{MAIN_PAGE.buttonCreate}
 			</button>
-			<button class="primary-btn">
-				{MAIN_PAGE.buttonShuffle}
-			</button>
 		</div>
 	</article>
 	<aside class="img part">
