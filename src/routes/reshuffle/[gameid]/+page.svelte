@@ -1,17 +1,25 @@
 <script lang="ts">
-  import type { PageData, ActionData } from './$types';
-  export let data: PageData;
+	import { goto } from '$app/navigation';
+  import type { ActionData } from './$types';
   export let form: ActionData;
 </script>
 
 <main class='container'>
-  <form class='form-section' method="POST">
-    <p>{data.result.gifteeEmail}</p>
-    <p>{data.result.wishlistDescriptions}</p>
-    
-    <button type='submit' >
+  
+  <form class='form-section' method="POST"> 
+    <article class='title-section'>
+      <h3>Провести жеребьевку</h3>
+    </article> 
+    <button type='submit' class='primary-btn'>
       Жербьевка
     </button>
-    <p>{form?.actionRes}</p>
+    {#if form?.actionRes}
+    <div class='center'>
+      <p>{form?.actionRes}</p>
+      <button class='primary-btn' on:click={()=>{goto(`/reshuffle/${form?.gameid}/present`)}}>Узнать подопечного</button>
+    </div>
+      
+    {/if}
+    
   </form>
 </main>
