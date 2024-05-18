@@ -1,9 +1,10 @@
-import type { PageServerLoad, Actions } from './$types';
+import type { Actions } from './$types';
 import { BASE_URL } from '$env/static/private';
 
 export const actions = {
 	default: async ({ params, cookies }) => {
-		const response = await fetch(`http://158.160.21.73:8080/games/${params.gameid}/reshuffle`, {
+		console.log(BASE_URL);
+		const response = await fetch(`${BASE_URL}games/${params.gameid}/reshuffle`, {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${cookies.get('accessToken')}`,
