@@ -19,8 +19,8 @@ const schema = z.object({
 	email3: z.string().email().optional(),
 	name4: z.string().min(2).optional(),
 	email4: z.string().email().optional(),
-	name5: z.string().min(2),
-	emai5: z.string().email(),
+	name5: z.string().min(2).optional(),
+	emai5: z.string().email().optional(),
 	name6: z.string().min(2).optional(),
 	email6: z.string().email().optional(),
 	name7: z.string().min(2).optional(),
@@ -66,16 +66,15 @@ export const actions = {
 			}
 
 			console.log(JSON.stringify(invitations));
-	const response = await fetch( `${BASE_URL}invitations/${request.params.gameid}/send`, {
-					method: 'POST',
-					headers: {
-						accept: '*/*',
-						'Content-Type': 'application/json',
-						Authorization: `Bearer ${request.locals.token}`
-					},
-					body: JSON.stringify(invitations)
-				}
-			);
+			const response = await fetch(`${BASE_URL}invitations/${request.params.gameid}/send`, {
+				method: 'POST',
+				headers: {
+					accept: '*/*',
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${request.locals.token}`
+				},
+				body: JSON.stringify(invitations)
+			});
 			console.log('response');
 			console.log(response);
 
