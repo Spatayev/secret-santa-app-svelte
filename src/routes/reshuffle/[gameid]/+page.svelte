@@ -16,7 +16,7 @@
     {#if form?.actionRes}
     <div class='center'>
       <p>{form?.actionRes}</p>
-      <button class='primary-btn' on:click={()=>{goto(`/reshuffle/${form?.gameid}/present`)}}>Узнать подопечного</button>
+      <a class='primary-btn' href={`./${form?.gameid}/present`}>Узнать подопечного</a>
     </div>
       
     {/if}

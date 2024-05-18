@@ -9,7 +9,9 @@
         <article class='title-section'>
             <h3>Подопечный</h3>
         </article>
-        <p>{data.result.gifteeEmail}</p>
-        <p>{data.result.wishlistDescriptions}</p>
+        <article class='account-info'>
+            <h4>{data.result.gifteeEmail}</h4>
+            <p>{data.result.wishlistDescriptions}</p>
+        </article>
     </form>
 </main>
