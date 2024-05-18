@@ -126,6 +126,9 @@ ul li a {
 	-moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
+.form-section .center {
+	align-items: center;
+}
 .error-input.input-style {
 	border: red solid 3px;
 }
@@ -283,6 +286,9 @@ h3 {
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
+}
+.content-box.center {
+	width: 200px;
 }
 
 .players-card {

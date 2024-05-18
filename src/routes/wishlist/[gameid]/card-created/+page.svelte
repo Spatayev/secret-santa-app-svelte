@@ -7,11 +7,11 @@
 
 
 <main class="container">
-  <section class="form-section">
+  <section class="form-section center">
     <article class='title-section'>
       <h3>Карточка участника создана!</h3>
     </article>
-      <div class="content-box">
+      <div class="content-box center">
         <img src={SantaInSled} alt="santa_thum" class='card-img'>
       </div>
     {#if data.isHost}
@@ -27,14 +27,5 @@
 </main>
 
 <style>
-  .form-section {
-    align-items: center;
-  }
-  .content-box {
-    max-width: 10vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 </style>
  
