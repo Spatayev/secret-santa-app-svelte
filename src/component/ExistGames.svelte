@@ -11,8 +11,10 @@
 	</div>
 	<small class='about-game'>{GAME_COMP[existGames.role]}</small>
 	<small class='about-game'>{`${GAME_COMP.quantity} ${existGames.participantCount}`}</small>
-	{#if existGames.role==='PARTICIPANT'}
+	{#if existGames.role==='PARTICIPANT' && existGames.status !='MATCHING_COMPLETED'}
 		<a class='btn-secret' href={`/games/created/${existGames.id}/invite/card`}>Создать свою карточку</a>
+	{:else if existGames.status ==='MATCHING_COMPLETED'}
+		<a class='btn-secret' href={`/reshuffle/${existGames.id}/present`}>Узнать подопечного</a>
 	{:else}
 		<a class='btn-secret' href={`/games/created/${existGames.id}`}>Список участников</a>
 	{/if}
